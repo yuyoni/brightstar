@@ -2,7 +2,7 @@ import { CenterInfo } from "@/types"
 
 export const centerInfo: CenterInfo = {
   name: "빛나는 별 심리상담센터",
-  address: "부산광역시 북구 화명동",
+  address: "부산 북구 화명신도시로 129 골든프라자 7층",
   phone: "051-1234-5678",
   email: "contact@brightstar.com",
   hours: {

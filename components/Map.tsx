@@ -1,6 +1,7 @@
 import Container from "./Container";
 import SectionTitle from "./SectionTitle";
 import ScrollReveal from "./ScrollReveal";
+import KakaoMap from "./KakaoMap";
 import { centerInfo } from "@/data/center";
 
 export default function Map() {
@@ -15,11 +16,10 @@ export default function Map() {
             <ScrollReveal>
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-                        <div className="aspect-[16/9] bg-gray-100 flex items-center justify-center">
-                            <p className="text-gray-400">
-                                지도가 여기에 표시됩니다
-                            </p>
-                        </div>
+                        <KakaoMap
+                            address="부산 북구 화명신도시로 129"
+                            detailAddress="부산 북구 화명신도시로 129 골든프라자 7층"
+                        />
                         <div className="p-6">
                             <p className="text-base md:text-lg text-gray-600 leading-relaxed">
                                 <strong className="text-slate-900">
