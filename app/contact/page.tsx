@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import Container from "@/components/Container";
-import SectionTitle from "@/components/SectionTitle";
-import ScrollReveal from "@/components/ScrollReveal";
+import Container from "@/components/ui/Container";
+import SectionTitle from "@/components/ui/SectionTitle";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import { centerInfo } from "@/data/center";
-import Map from "@/components/Map";
+import Map from "@/components/features/Map";
 
 export const metadata: Metadata = {
     title: "문의 및 예약 | 빛나는 별 심리상담센터",

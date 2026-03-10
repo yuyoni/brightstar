@@ -1,6 +1,6 @@
-import Container from "./Container";
-import SectionTitle from "./SectionTitle";
-import ScrollReveal from "./ScrollReveal";
+import Container from "../ui/Container";
+import SectionTitle from "../ui/SectionTitle";
+import ScrollReveal from "../ui/ScrollReveal";
 import Link from "next/link";
 
 export default function Process() {

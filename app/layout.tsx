@@ -1,9 +1,8 @@
+import Footer from "@/components/features/Footer";
+import Header from "@/components/features/Header";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
-import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
     title: "빛나는 별 심리상담센터 | 별자리 심리학",
@@ -27,7 +26,6 @@ export default function RootLayout({
                 {children}
                 <Footer />
                 <ScrollToTop />
-                <SmoothScroll />
             </body>
         </html>
     );
