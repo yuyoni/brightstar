@@ -1,68 +1,59 @@
-import Container from "../ui/Container";
-import SectionTitle from "../ui/SectionTitle";
-import ScrollReveal from "../ui/ScrollReveal";
+import { Baby, ClipboardCheck, HouseHeart, User } from "lucide-react";
 import Link from "next/link";
+import Container from "../ui/Container";
+import ScrollReveal from "../ui/ScrollReveal";
+import SectionTitle from "../ui/SectionTitle";
 
 export default function About() {
     return (
         <Container id="about">
             <ScrollReveal>
-                <SectionTitle
-                    title="센터 소개"
-                    subtitle="빛나는 별 심리상담센터는 따뜻한 공감과 전문적인 상담을 통해 마음의 건강을 돕습니다."
-                />
-            </ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <ScrollReveal>
-                    <div>
-                        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-4">
-                            우리의 철학
-                        </h3>
-                        <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-4">
-                            모든 사람은 스스로 치유하고 성장할 수 있는 내면의
-                            힘을 가지고 있습니다. 저희는 그 과정을 함께 걸어가는
-                            동반자입니다.
-                        </p>
-                        <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                            안전하고 편안한 환경에서 여러분의 이야기에 귀
-                            기울이며, 진정한 변화와 성장을 지원합니다.
-                        </p>
-                    </div>
+                    <SectionTitle
+                        title="센터 소개"
+                        subtitle="빛나는 별 심리상담센터는 따뜻한 공감과 전문적인 상담을 통해 마음의 건강을 돕습니다."
+                    />
                 </ScrollReveal>
                 <ScrollReveal>
-                    <div>
-                        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-4">
+                    <div className="mb-16">
+                        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-8 text-center">
                             전문 분야
                         </h3>
-                        <ul className="space-y-3">
-                            <li className="flex items-start">
-                                <span className="text-amber-400 mr-2">•</span>
-                                <span className="text-base md:text-lg text-gray-600">
-                                    개인상담 및 심리치료
-                                </span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-amber-400 mr-2">•</span>
-                                <span className="text-base md:text-lg text-gray-600">
-                                    아동청소년 상담
-                                </span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-amber-400 mr-2">•</span>
-                                <span className="text-base md:text-lg text-gray-600">
-                                    가족 및 부부상담
-                                </span>
-                            </li>
-                            <li className="flex items-start">
-                                <span className="text-amber-400 mr-2">•</span>
-                                <span className="text-base md:text-lg text-gray-600">
-                                    트라우마 치료
-                                </span>
-                            </li>
-                        </ul>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
+                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
+                                    <User className="w-6 h-6 text-amber-400" />
+                                </div>
+                                <h4 className="text-base font-medium text-slate-900 leading-snug">
+                                    개인상담<br />및 심리치료
+                                </h4>
+                            </div>
+                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
+                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
+                                    <Baby className="w-6 h-6 text-amber-400" />
+                                </div>
+                                <h4 className="text-base font-medium text-slate-900 leading-snug">
+                                    아동청소년<br />상담
+                                </h4>
+                            </div>
+                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
+                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
+                                    <HouseHeart className="w-6 h-6 text-amber-400" />
+                                </div>
+                                <h4 className="text-base font-medium text-slate-900 leading-snug">
+                                    가족 및<br />부부상담
+                                </h4>
+                            </div>
+                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
+                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
+                                    <ClipboardCheck className="w-6 h-6 text-amber-400" />
+                                </div>
+                                <h4 className="text-base font-medium text-slate-900 leading-snug">
+                                    MMPI, TCI, <br />웩슬러 지능검사
+                                </h4>
+                            </div>
+                        </div>
                     </div>
                 </ScrollReveal>
-            </div>
 
             <ScrollReveal>
                 <div className="mt-16 text-center">

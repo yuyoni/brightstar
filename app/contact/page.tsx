@@ -72,7 +72,7 @@ export default function ContactPage() {
                                     <p className="text-sm text-gray-400 mb-1">
                                         평일
                                     </p>
-                                    <p className="text-base md:text-lg text-gray-600">
+                                    <p className="text-base md:text-lg text-gray-400">
                                         {centerInfo.hours.weekday}
                                     </p>
                                 </div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                                     <p className="text-sm text-gray-400 mb-1">
                                         주말
                                     </p>
-                                    <p className="text-base md:text-lg text-gray-600">
+                                    <p className="text-base md:text-lg text-gray-400">
                                         {centerInfo.hours.weekend}
                                     </p>
                                 </div>

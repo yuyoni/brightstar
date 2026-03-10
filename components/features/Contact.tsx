@@ -80,7 +80,7 @@ export default function Contact() {
                 </ScrollReveal>
             </div>
             <ScrollReveal>
-                <div className="mt-16 flex flex-col items-center gap-4">
+                <div className="mt-16 flex flex-row flex-wrap justify-center gap-4">
                     <a
                         href={`tel:${centerInfo.phone.replace(/-/g, "")}`}
                         className="group inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -100,26 +100,21 @@ export default function Contact() {
                         </svg>
                         <span>전화로 상담 예약하기</span>
                     </a>
-
-                    <Link
-                        href="/contact"
-                        className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-900 text-slate-900 font-medium rounded-md hover:bg-slate-900 hover:text-white transition-all duration-300"
+                    <a
+                        href="https://pf.kakao.com/_bGrXxj"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-[#FEE500] text-[#3A1D1D] font-medium rounded-md hover:bg-[#F5DC00] transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
-                        <span>상세 정보 및 오시는 길 보기</span>
                         <svg
-                            className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
-                            fill="none"
-                            stroke="currentColor"
+                            className="w-5 h-5"
                             viewBox="0 0 24 24"
+                            fill="currentColor"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"
-                            />
+                            <path d="M12 3C6.477 3 2 6.694 2 11.25c0 2.91 1.73 5.478 4.354 7.02-.192.693-.695 2.516-.795 2.907-.124.49.18.483.377.351.155-.103 2.46-1.668 3.459-2.348.847.12 1.72.183 2.605.183 5.523 0 10-3.694 10-8.25C22 6.694 17.523 3 12 3z" />
                         </svg>
-                    </Link>
+                        <span>카카오톡으로 문의하기</span>
+                    </a>
                 </div>
             </ScrollReveal>
         </Container>
