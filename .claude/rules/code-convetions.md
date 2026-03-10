@@ -233,9 +233,9 @@ Use metadata API in layout.
 Example
 
 export const metadata = {
-title: "부산 화명동 심리상담 | 빛나는 별 심리상담센터",
+title: "빛나는 별 심리상담센터 | 별자리 심리학",
 description:
-"부산 북구 화명동에 위치한 심리상담센터."
+"별자리 심리학을 통한 상담, 빛나는 별 심리상담센터 "
 }
 
 ---
