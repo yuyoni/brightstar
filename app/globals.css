@@ -10,8 +10,74 @@ body {
   background: #ffffff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  .animate-fade-in-delay {
+    animation: fade-in 1s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fade-in 1s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  /* 영화 필름 애니메이션 */
+  @keyframes film-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .film-strip {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    animation: film-scroll 30s linear infinite;
+  }
+
+  .film-strip-set {
+    display: flex;
+    width: 50%;
+    height: 100%;
+  }
+
+  .film-item {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+  }
+
+  /* 스크롤 스냅 */
+  .snap-section {
+    min-height: 100vh;
   }
 }

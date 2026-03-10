@@ -3,11 +3,12 @@ import { ReactNode } from "react"
 interface ContainerProps {
   children: ReactNode
   className?: string
+  id?: string
 }
 
-export default function Container({ children, className = "" }: ContainerProps) {
+export default function Container({ children, className = "", id }: ContainerProps) {
   return (
-    <section className={`max-w-6xl mx-auto px-6 py-24 ${className}`}>
+    <section id={id} className={`snap-section max-w-6xl mx-auto px-6 py-24 flex flex-col justify-center ${className}`}>
       {children}
     </section>
   )

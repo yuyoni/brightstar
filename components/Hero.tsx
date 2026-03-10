@@ -1,20 +1,66 @@
+"use client"
+
 export default function Hero() {
+  const scrollToContact = () => {
+    const element = document.getElementById("contact")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-stone-50">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h1 className="text-4xl md:text-5xl font-semibold text-slate-900 mb-6">
+    <section id="hero" className="snap-section relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 영화 필름 스타일 배경 슬라이드 */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="film-strip">
+          {/* 이미지 반복 (무한 루프 효과) */}
+          {[...Array(2)].map((_, setIndex) => (
+            <div key={setIndex} className="film-strip-set">
+              {[0, 1, 2, 3, 4].map((index) => (
+                <div key={index} className="film-item">
+                  {/* 실제 이미지 사용 시 아래 주석 해제 */}
+                  {/* <Image
+                    src={`/images/hero-${(index % 3) + 1}.jpg`}
+                    alt={`상담실 이미지`}
+                    fill
+                    className="object-cover"
+                  /> */}
+
+                  {/* 임시 div 박스 (이미지 대체용) */}
+                  <div
+                    className={`w-full h-full ${
+                      index % 3 === 0
+                        ? "bg-gradient-to-br from-stone-100 to-stone-200"
+                        : index % 3 === 1
+                        ? "bg-gradient-to-br from-slate-100 to-slate-200"
+                        : "bg-gradient-to-br from-zinc-100 to-zinc-200"
+                    }`}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* 오버레이 */}
+        <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px]" />
+      </div>
+
+      {/* 컨텐츠 */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <h1 className="text-4xl md:text-5xl font-semibold text-slate-900 mb-6 animate-fade-in">
           빛나는 별 심리상담센터
         </h1>
-        <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+        <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-8 animate-fade-in-delay">
           마음의 회복과 성장을 함께 걷는 공간입니다.<br />
           부산 북구 화명동에서 여러분을 기다립니다.
         </p>
-        <a
-          href="#contact"
-          className="inline-block bg-slate-900 text-white px-6 py-3 rounded-md hover:bg-slate-800 transition duration-300"
+        <button
+          onClick={scrollToContact}
+          className="inline-block bg-slate-900 text-white px-6 py-3 rounded-md hover:bg-slate-800 transition duration-300 animate-fade-in-delay-2"
         >
           상담 문의하기
-        </a>
+        </button>
       </div>
     </section>
   )

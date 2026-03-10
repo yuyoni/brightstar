@@ -123,8 +123,7 @@ text-slate-900
 
 Background
 
-bg-white  
-bg-stone-50
+bg-white
 
 Accent
 

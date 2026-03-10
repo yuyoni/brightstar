@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "부산 화명동 심리상담 | 빛나는 별 심리상담센터",
@@ -18,7 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className="font-pretendard">{children}</body>
+      <body className="font-pretendard">
+        <Header />
+        {children}
+        <Footer />
+        <ScrollToTop />
+        <SmoothScroll />
+      </body>
     </html>
   );
 }
