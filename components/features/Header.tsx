@@ -43,11 +43,11 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         } ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm py-4"
+            ? "bg-white/30 backdrop-blur-md border-white/40 shadow-sm py-4"
             : "bg-transparent py-6"
         }`}
       >
@@ -110,7 +110,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="md:hidden bg-white/30 backdrop-blur-md border-t border-white/40">
             <ul className="max-w-6xl mx-auto px-6 py-4 space-y-3">
               {navItems.map((item) => (
                 <li key={item.href}>
