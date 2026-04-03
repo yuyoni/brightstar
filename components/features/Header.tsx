@@ -37,6 +37,7 @@ export default function Header() {
     { href: "/about", label: "센터소개" },
     { href: "/services", label: "상담안내" },
     { href: "/process", label: "상담절차" },
+    { href: "/board", label: "공지사항" },
     { href: "/contact", label: "문의" },
   ]
 

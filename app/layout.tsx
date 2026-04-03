@@ -1,6 +1,3 @@
-import Footer from "@/components/features/Footer";
-import Header from "@/components/features/Header";
-import ScrollToTop from "@/components/ui/ScrollToTop";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -22,10 +19,7 @@ export default function RootLayout({
     return (
         <html lang="ko">
             <body className="font-pretendard">
-                <Header />
                 {children}
-                <Footer />
-                <ScrollToTop />
             </body>
         </html>
     );
