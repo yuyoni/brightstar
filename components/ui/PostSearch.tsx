@@ -1,14 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { Category } from '@/types'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-interface AdminSearchProps {
+interface PostSearchProps {
   categories: Category[]
+  isAdmin?: boolean
 }
 
-export default function AdminSearch({ categories }: AdminSearchProps) {
+export default function PostSearch({ categories, isAdmin = false }: PostSearchProps) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -28,18 +29,22 @@ export default function AdminSearch({ categories }: AdminSearchProps) {
     setPublished(searchParams.get('published') ?? '')
   }, [searchParams])
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  function buildParams() {
     const params = new URLSearchParams()
-    const sort = searchParams.get('sort') ?? 'desc'
     if (q.trim()) params.set('q', q.trim())
     if (from) params.set('from', from)
     if (to) params.set('to', to)
     if (category) params.set('category', category)
-    if (published) params.set('published', published)
-    params.set('sort', sort)
-    router.push(`${pathname}?${params.toString()}`)
+    if (isAdmin && published) params.set('published', published)
+
+    return params
   }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    router.push(`${pathname}?${buildParams().toString()}`)
+  }
+
 
   // 입력값만 초기화 (URL 변경 없음 — 이후 검색 버튼 클릭 시 적용)
   function handleReset() {
@@ -50,22 +55,24 @@ export default function AdminSearch({ categories }: AdminSearchProps) {
     setPublished('')
   }
 
-  const hasValue = q || from || to || category || published
 
   return (
     <form onSubmit={handleSubmit} className="mb-6">
       <div className="flex flex-wrap gap-x-4 gap-y-3 items-end">
-        {/* 검색어 */}
-        <div className="flex-1 min-w-48 flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-500">검색어</label>
-          <input
-            type="text"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="제목 또는 내용"
-            className="border border-gray-200 rounded-md px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-400"
-          />
-        </div>
+        {/* 상태 */}
+        {isAdmin && (
+          <div className="flex flex-col gap-1">
+            <label className="text-xs font-medium text-gray-500">상태</label>
+            <select
+              value={published}
+              onChange={(e) => setPublished(e.target.value)}
+              className="border border-gray-200 rounded-md px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400 bg-white"
+            >
+              <option value="">전체</option>
+              <option value="true">공개</option>
+              <option value="false">비공개</option>
+            </select>
+          </div>)}
 
         {/* 카테고리 */}
         {categories.length > 0 && (
@@ -84,22 +91,20 @@ export default function AdminSearch({ categories }: AdminSearchProps) {
           </div>
         )}
 
-        {/* 상태 */}
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-500">상태</label>
-          <select
-            value={published}
-            onChange={(e) => setPublished(e.target.value)}
-            className="border border-gray-200 rounded-md px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400 bg-white"
-          >
-            <option value="">전체</option>
-            <option value="true">공개</option>
-            <option value="false">비공개</option>
-          </select>
+        {/* 검색어 */}
+        <div className="flex-1 min-w-48 flex flex-col gap-1">
+          <label className="text-xs font-medium text-gray-500">검색어</label>
+          <input
+            type="text"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="제목 또는 내용"
+            className="border border-gray-200 rounded-md px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-400"
+          />
         </div>
 
         {/* 시작일 */}
-        <div className="flex flex-col gap-1">
+        {isAdmin && <div className="flex flex-col gap-1">
           <label className="text-xs font-medium text-gray-500">시작일</label>
           <input
             type="date"
@@ -107,10 +112,10 @@ export default function AdminSearch({ categories }: AdminSearchProps) {
             onChange={(e) => setFrom(e.target.value)}
             className="border border-gray-200 rounded-md px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400"
           />
-        </div>
+        </div>}
 
         {/* 종료일 */}
-        <div className="flex flex-col gap-1">
+        {isAdmin && <div className="flex flex-col gap-1">
           <label className="text-xs font-medium text-gray-500">종료일</label>
           <input
             type="date"
@@ -118,16 +123,10 @@ export default function AdminSearch({ categories }: AdminSearchProps) {
             onChange={(e) => setTo(e.target.value)}
             className="border border-gray-200 rounded-md px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-1 focus:ring-slate-400"
           />
-        </div>
+        </div>}
 
         {/* 버튼 */}
         <div className="flex items-center gap-2 pb-0.5">
-          <button
-            type="submit"
-            className="bg-slate-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition duration-200"
-          >
-            검색
-          </button>
           <button
             type="button"
             onClick={handleReset}
@@ -135,6 +134,13 @@ export default function AdminSearch({ categories }: AdminSearchProps) {
           >
             초기화
           </button>
+          <button
+            type="submit"
+            className="bg-slate-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition duration-200"
+          >
+            검색
+          </button>
+
         </div>
       </div>
     </form>

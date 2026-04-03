@@ -13,7 +13,7 @@ export default async function BoardDetailPage({ params }: BoardDetailPageProps) 
 
   const { data: post, error } = await supabaseAdmin
     .from('posts')
-    .select('*, categories(id, name)')
+    .select('*, categories(id, name, color)')
     .eq('id', id)
     .eq('is_published', true)
     .single()
@@ -45,8 +45,8 @@ export default async function BoardDetailPage({ params }: BoardDetailPageProps) 
     post.image_urls?.length
       ? post.image_urls
       : post.image_url
-      ? [post.image_url]
-      : []
+        ? [post.image_url]
+        : []
 
   return (
     <main className="min-h-[70vh] max-w-3xl mx-auto px-6 py-24">
@@ -60,7 +60,8 @@ export default async function BoardDetailPage({ params }: BoardDetailPageProps) 
       <article>
         <header className="mb-8 pb-8 border-b border-gray-100">
           {post.categories && (
-            <span className="inline-block text-xs text-amber-500 font-medium mb-3">
+            <span className="inline-block text-xs font-medium mb-3" style={{ color: post.categories.color ?? '#f59e0b' }}
+            >
               {post.categories.name}
             </span>
           )}

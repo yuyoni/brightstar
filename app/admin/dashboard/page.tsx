@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { Category, Post } from '@/types'
 import LogoutButton from './LogoutButton'
-import AdminSearch from './AdminSearch'
+import PostSearch from '@/components/ui/PostSearch'
 import PostsTable from './PostsTable'
 
 export const dynamic = 'force-dynamic'
@@ -16,7 +16,6 @@ interface SearchParams {
   to?: string
   category?: string
   published?: string
-  sort?: string
   page?: string
 }
 
@@ -47,7 +46,7 @@ async function getPosts(
   if (p.published === 'false') query = query.eq('is_published', false)
 
   query = query
-    .order('created_at', { ascending: p.sort === 'asc' })
+    .order('created_at', { ascending: false })
     .range(offset, offset + ITEMS_PER_PAGE - 1)
 
   const { data, count } = await query
@@ -62,7 +61,6 @@ function buildHref(params: SearchParams, overrides: Partial<SearchParams>) {
   if (merged.to) p.set('to', merged.to)
   if (merged.category) p.set('category', merged.category)
   if (merged.published) p.set('published', merged.published)
-  if (merged.sort) p.set('sort', merged.sort)
   if (merged.page && Number(merged.page) > 1) p.set('page', merged.page)
   return `/admin/dashboard${p.toString() ? `?${p.toString()}` : ''}`
 }
@@ -75,11 +73,7 @@ export default async function AdminDashboardPage({ searchParams }: DashboardPage
 
   const page = Math.max(1, Number(searchParams.page ?? 1))
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE)
-  const sort = searchParams.sort ?? 'desc'
-  const sortHref = buildHref(searchParams, { sort: sort === 'desc' ? 'asc' : 'desc', page: '1' })
 
-  const offset = (page - 1) * ITEMS_PER_PAGE
-  const rangeEnd = Math.min(offset + ITEMS_PER_PAGE, total)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -98,25 +92,14 @@ export default async function AdminDashboardPage({ searchParams }: DashboardPage
         </div>
       </header>
 
+
+
       <main className="max-w-5xl mx-auto px-6 py-10">
         <Suspense>
-          <AdminSearch categories={categories} />
+          <PostSearch categories={categories} isAdmin />
         </Suspense>
 
-        <div className="flex items-center justify-between mb-4">
-          <p className="text-sm text-gray-500">
-            총 {total}개
-            {total > 0 && ` · ${offset + 1}–${rangeEnd}번째`}
-          </p>
-          <Link
-            href="/admin/posts/new"
-            className="bg-slate-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition duration-200"
-          >
-            새 글 작성
-          </Link>
-        </div>
-
-        <PostsTable posts={posts} sortHref={sortHref} sort={sort} />
+        <PostsTable key={page} posts={posts} total={total} />
 
         {/* 페이지네이션 */}
         {totalPages > 1 && (
@@ -153,11 +136,10 @@ export default async function AdminDashboardPage({ searchParams }: DashboardPage
                     <Link
                       key={p}
                       href={buildHref(searchParams, { page: String(p) })}
-                      className={`w-8 h-8 flex items-center justify-center text-sm rounded-md transition duration-200 ${
-                        p === page
-                          ? 'bg-slate-900 text-white'
-                          : 'border border-gray-200 text-slate-600 hover:bg-gray-50'
-                      }`}
+                      className={`w-8 h-8 flex items-center justify-center text-sm rounded-md transition duration-200 ${p === page
+                        ? 'bg-slate-900 text-white'
+                        : 'border border-gray-200 text-slate-600 hover:bg-gray-50'
+                        }`}
                     >
                       {p}
                     </Link>

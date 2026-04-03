@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { Post, Category } from '@/types'
-import BoardSearch from './BoardSearch'
+import PostSearch from '@/components/ui/PostSearch'
 
 export const dynamic = 'force-dynamic'
 
@@ -18,7 +18,7 @@ async function getCategories(): Promise<Category[]> {
 async function getPosts(p: BoardPageProps['searchParams']): Promise<Post[]> {
   let query = supabaseAdmin
     .from('posts')
-    .select('*, categories(id, name)')
+    .select('*, categories(id, name, color)')
     .eq('is_published', true)
 
   if (p.q) query = query.or(`title.ilike.%${p.q}%,content.ilike.%${p.q}%`)
@@ -43,7 +43,7 @@ export default async function BoardPage({ searchParams }: BoardPageProps) {
       </div>
 
       <Suspense>
-        <BoardSearch categories={categories} />
+        <PostSearch categories={categories} />
       </Suspense>
 
       {posts.length === 0 ? (
@@ -62,7 +62,10 @@ export default async function BoardPage({ searchParams }: BoardPageProps) {
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
                       {post.categories && (
-                        <span className="text-xs text-amber-500 font-medium shrink-0">
+                        <span
+                          className="text-xs font-medium shrink-0"
+                          style={{ color: post.categories.color ?? '#f59e0b' }}
+                        >
                           {post.categories.name}
                         </span>
                       )}

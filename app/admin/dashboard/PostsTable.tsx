@@ -8,11 +8,10 @@ import { Post } from '@/types'
 
 interface PostsTableProps {
   posts: Post[]
-  sortHref: string
-  sort: string
+  total: number
 }
 
-export default function PostsTable({ posts, sortHref, sort }: PostsTableProps) {
+export default function PostsTable({ posts, total }: PostsTableProps) {
   const router = useRouter()
   const [selected, setSelected] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
@@ -57,19 +56,31 @@ export default function PostsTable({ posts, sortHref, sort }: PostsTableProps) {
 
   return (
     <div>
-      {/* 다중 선택 액션 바 */}
-      {selected.length > 0 && (
-        <div className="mb-3 flex items-center gap-3 px-1">
-          <span className="text-sm text-gray-500">{selected.length}개 선택됨</span>
-          <button
-            onClick={handleBulkDelete}
-            disabled={loading}
-            className="text-sm text-red-500 hover:text-red-700 transition duration-200 disabled:opacity-50"
-          >
-            선택 삭제
-          </button>
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="flex items-center gap-3">
+          <p className="text-sm text-gray-500">총 {total}개</p>
+          {selected.length > 0 && (
+            <>
+              <span className="text-sm text-gray-400">{selected.length}개 선택됨</span>
+              <button
+                onClick={handleBulkDelete}
+                disabled={loading}
+                className="text-sm text-red-500 hover:text-red-700 transition duration-200 disabled:opacity-50"
+              >
+                선택 삭제
+              </button>
+            </>
+          )}
         </div>
-      )}
+        <Link
+          href="/admin/posts/new"
+          className="bg-slate-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-slate-800 transition duration-200"
+        >
+          새 글 작성
+        </Link>
+      </div>
+
+
 
       {posts.length === 0 ? (
         <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
@@ -91,14 +102,7 @@ export default function PostsTable({ posts, sortHref, sort }: PostsTableProps) {
                 <th className="text-left px-4 py-3 font-medium text-gray-500">제목</th>
                 <th className="px-4 py-3 font-medium text-gray-500 w-28 text-center">카테고리</th>
                 <th className="px-4 py-3 font-medium text-gray-500 w-20 text-center">상태</th>
-                <th className="px-4 py-3 font-medium text-gray-500 w-32 text-center">
-                  <Link
-                    href={sortHref}
-                    className="inline-flex items-center gap-1 hover:text-slate-900 transition duration-200"
-                  >
-                    작성일 <span>{sort === 'desc' ? '↓' : '↑'}</span>
-                  </Link>
-                </th>
+                <th className="px-4 py-3 font-medium text-gray-500 w-32 text-center">작성일</th>
                 <th className="px-4 py-3 w-24"></th>
               </tr>
             </thead>
@@ -140,11 +144,10 @@ export default function PostsTable({ posts, sortHref, sort }: PostsTableProps) {
                   </td>
                   <td className="px-4 py-3 text-center">
                     <span
-                      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
-                        post.is_published
-                          ? 'bg-green-50 text-green-700'
-                          : 'bg-gray-100 text-gray-500'
-                      }`}
+                      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${post.is_published
+                        ? 'bg-green-50 text-green-700'
+                        : 'bg-gray-100 text-gray-500'
+                        }`}
                     >
                       {post.is_published ? '공개' : '비공개'}
                     </span>
