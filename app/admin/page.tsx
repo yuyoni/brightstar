@@ -22,10 +22,11 @@ export default function AdminLoginPage() {
     })
 
     const data = await res.json()
-    setLoading(false)
+
 
     if (!res.ok) {
       setError(data.error)
+      setLoading(false)
       return
     }
 
