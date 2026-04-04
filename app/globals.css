@@ -79,8 +79,8 @@ html {
 
   .film-item {
     position: relative;
-    flex: 1;
-    min-width: 0;
+    flex: none;
+    width: 80vw;
     height: 100%;
   }
 

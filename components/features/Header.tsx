@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -34,43 +35,37 @@ export default function Header() {
   }, [lastScrollY])
 
   const navItems = [
-    { href: "/about", label: "센터소개" },
-    { href: "/services", label: "상담안내" },
-    { href: "/process", label: "상담절차" },
-    { href: "/board", label: "공지사항" },
-    { href: "/contact", label: "문의" },
-  ]
+    { href: "/", label: "홈", order: 1 },
+    { href: "/about", label: "센터소개", order: 2 },
+    { href: "/services", label: "상담안내", order: 3 },
+    { href: "/qualification", label: "자격과정", order: 4 },
+    { href: "/board", label: "공지사항", order: 5 },
+    { href: "/contact", label: "문의", order: 6 },
+  ].sort((a, b) => a.order - b.order)
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        } ${
-          isScrolled
-            ? "bg-white/30 backdrop-blur-md border-white/40 shadow-sm py-4"
-            : "bg-transparent py-6"
-        }`}
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b bg-white/50 backdrop-blur-md border-white/40 shadow-sm ${isVisible ? "translate-y-0" : "-translate-y-full"
+          } `}
       >
         <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between">
           <Link
             href="/"
-            className={`text-xl font-semibold transition-colors ${
-              isScrolled ? "text-slate-900" : "text-slate-900"
-            }`}
+            className={`py-2 text-xl font-semibold transition-colors ${isScrolled ? "text-slate-900" : "text-slate-900"
+              }`}
           >
-            빛나는 별
+            <Image src="/logo.png" alt="빛나는 별" width={60} height={60} />
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex gap-8">
+          <ul className="hidden md:flex gap-10 py-4">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-slate-900 ${
-                    pathname === item.href ? "text-slate-900 font-semibold" : "text-gray-700"
-                  }`}
+                  className={`text-md font-medium transition-colors hover:text-slate-900 ${pathname === item.href ? "text-slate-900 font-semibold" : "text-gray-700"
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -118,9 +113,8 @@ export default function Header() {
                   <Link
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block w-full text-left text-sm font-medium py-2 ${
-                      pathname === item.href ? "text-slate-900 font-semibold" : "text-gray-700"
-                    } hover:text-slate-900`}
+                    className={`block w-full text-left text-sm font-medium py-2 ${pathname === item.href ? "text-slate-900 font-semibold" : "text-gray-700"
+                      } hover:text-slate-900`}
                   >
                     {item.label}
                   </Link>

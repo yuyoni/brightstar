@@ -14,7 +14,7 @@ export default function Container({
     return (
         <section
             id={id}
-            className={`snap-start min-h-screen max-w-6xl mx-auto px-6 py-24 flex flex-col justify-center ${className}`}
+            className={`snap-start min-h-screen max-w-6xl mx-auto px-6 py-16 flex flex-col justify-start ${className}`}
         >
             {children}
         </section>

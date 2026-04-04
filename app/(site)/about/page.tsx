@@ -22,50 +22,9 @@ export default function AboutPage() {
                 </ScrollReveal>
 
 
-                <ScrollReveal>
-                    <div className="mb-16">
-                        <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-8 text-center">
-                            전문 분야
-                        </h3>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
-                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
-                                    <User className="w-6 h-6 text-amber-400" />
-                                </div>
-                                <h4 className="text-base font-medium text-slate-900 leading-snug">
-                                    개인상담<br />및 심리치료
-                                </h4>
-                            </div>
-                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
-                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
-                                    <Baby className="w-6 h-6 text-amber-400" />
-                                </div>
-                                <h4 className="text-base font-medium text-slate-900 leading-snug">
-                                    아동청소년<br />상담
-                                </h4>
-                            </div>
-                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
-                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
-                                    <HouseHeart className="w-6 h-6 text-amber-400" />
-                                </div>
-                                <h4 className="text-base font-medium text-slate-900 leading-snug">
-                                    가족 및<br />부부상담
-                                </h4>
-                            </div>
-                            <div className="border border-gray-200 rounded-xl p-6 bg-white flex flex-col items-center text-center">
-                                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-4">
-                                    <ClipboardCheck className="w-6 h-6 text-amber-400" />
-                                </div>
-                                <h4 className="text-base font-medium text-slate-900 leading-snug">
-                                    MMPI, TCI, <br />웩슬러 지능검사
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </ScrollReveal>
 
                 <ScrollReveal>
-                    <div className="bg-stone-50 rounded-xl p-8 md:p-12">
+                    <div className="bg-stone-50 rounded-xl p-8 md:p-12 mb-16">
                         <h3 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-8">
                             센터장 소개
                         </h3>

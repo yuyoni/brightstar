@@ -35,7 +35,7 @@ export default function Process() {
         <Container id="process" className="bg-white">
             <ScrollReveal>
                 <SectionTitle
-                    title="상담 프로세스"
+                    title="상담 절차"
                     subtitle="체계적이고 단계적인 상담 과정을 통해 긍정적인 변화를 경험하실 수 있습니다."
                 />
             </ScrollReveal>
@@ -70,7 +70,7 @@ export default function Process() {
                         href="/process"
                         className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-900 text-slate-900 font-medium rounded-md hover:bg-slate-900 hover:text-white transition-all duration-300"
                     >
-                        <span>상담 프로세스 자세히 보기</span>
+                        <span>상담 절차 자세히 보기</span>
                         <svg
                             className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
                             fill="none"

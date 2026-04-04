@@ -6,7 +6,7 @@ import { centerInfo } from "@/data/center";
 
 export default function Contact() {
     return (
-        <Container className="bg-white" id="contact">
+        <Container id="contact" className="bg-white justify-center">
             <ScrollReveal>
                 <SectionTitle
                     title="문의 및 예약"

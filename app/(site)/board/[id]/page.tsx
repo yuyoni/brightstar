@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import ImageCarousel from '@/components/ui/ImageCarousel'
 import PostNavigation from '@/components/ui/PostNavigation'
+import Container from '@/components/ui/Container'
 
 interface BoardDetailPageProps {
   params: Promise<{ id: string }>
@@ -50,47 +51,49 @@ export default async function BoardDetailPage({ params }: BoardDetailPageProps) 
 
   return (
     <main className="min-h-[70vh] max-w-3xl mx-auto px-6 py-24">
-      <Link
-        href="/board"
-        className="inline-flex items-center text-sm text-gray-400 hover:text-slate-600 transition duration-200 mb-10"
-      >
-        ← 목록으로
-      </Link>
+      <Container>
+        <Link
+          href="/board"
+          className="inline-flex items-center text-sm text-gray-400 hover:text-slate-600 transition duration-200 mb-10"
+        >
+          ← 목록으로
+        </Link>
 
-      <article>
-        <header className="mb-8 pb-8 border-b border-gray-100">
-          {post.categories && (
-            <span className="inline-block text-xs font-medium mb-3" style={{ color: post.categories.color ?? '#f59e0b' }}
-            >
-              {post.categories.name}
-            </span>
-          )}
-          <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 leading-snug">
-            {post.title}
-          </h1>
-          <time className="block mt-3 text-sm text-gray-400">
-            {new Date(post.created_at).toLocaleDateString('ko-KR', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
-        </header>
+        <article>
+          <header className="mb-8 pb-8 border-b border-gray-100">
+            {post.categories && (
+              <span className="inline-block text-xs font-medium mb-3" style={{ color: post.categories.color ?? '#f59e0b' }}
+              >
+                {post.categories.name}
+              </span>
+            )}
+            <h1 className="text-2xl md:text-3xl font-semibold text-slate-900 leading-snug">
+              {post.title}
+            </h1>
+            <time className="block mt-3 text-sm text-gray-400">
+              {new Date(post.created_at).toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+          </header>
 
-        {/* 이미지 캐러셀 */}
-        <ImageCarousel images={images} />
+          {/* 이미지 캐러셀 */}
+          <ImageCarousel images={images} />
 
-        <div className="text-base text-gray-600 leading-relaxed whitespace-pre-wrap">
-          {post.content}
-        </div>
-      </article>
+          <div className="text-base text-gray-600 leading-relaxed whitespace-pre-wrap">
+            {post.content}
+          </div>
+        </article>
 
-      {/* 이전/다음 글 */}
-      <PostNavigation
-        prev={prevData ?? null}
-        next={nextData ?? null}
-        basePath="/board"
-      />
+        {/* 이전/다음 글 */}
+        <PostNavigation
+          prev={prevData ?? null}
+          next={nextData ?? null}
+          basePath="/board"
+        />
+      </Container>
     </main>
   )
 }

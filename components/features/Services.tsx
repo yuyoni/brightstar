@@ -6,7 +6,7 @@ import { services } from "@/data/services";
 
 export default function Services() {
     return (
-        <Container id="services" className="bg-white">
+        <Container id="services" className="bg-white justify-center">
             <ScrollReveal>
                 <SectionTitle
                     title="상담 서비스"

@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+
 export default function Hero() {
   const scrollToContact = () => {
     const element = document.getElementById("contact")
@@ -19,22 +21,11 @@ export default function Hero() {
               {[0, 1, 2, 3, 4].map((index) => (
                 <div key={index} className="film-item">
                   {/* 실제 이미지 사용 시 아래 주석 해제 */}
-                  {/* <Image
-                    src={`/images/hero-${(index % 3) + 1}.jpg`}
+                  <Image
+                    src={`/place${(index % 3) + 1}.jpeg`}
                     alt={`상담실 이미지`}
                     fill
                     className="object-cover"
-                  /> */}
-
-                  {/* 임시 div 박스 (이미지 대체용) */}
-                  <div
-                    className={`w-full h-full ${
-                      index % 3 === 0
-                        ? "bg-gradient-to-br from-stone-100 to-stone-200"
-                        : index % 3 === 1
-                        ? "bg-gradient-to-br from-slate-100 to-slate-200"
-                        : "bg-gradient-to-br from-zinc-100 to-zinc-200"
-                    }`}
                   />
                 </div>
               ))}
@@ -43,17 +34,14 @@ export default function Hero() {
         </div>
 
         {/* 오버레이 */}
-        <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px]" />
       </div>
 
       {/* 컨텐츠 */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <h1 className="text-4xl md:text-5xl font-semibold text-slate-900 mb-6 animate-fade-in">
-          빛나는 별 심리상담센터
-        </h1>
+      <div className="flex flex-col items-center relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <Image src="/logo.png" alt="빛나는 별" width={280} height={280} className="object-cover" />
         <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-8 animate-fade-in-delay">
-          마음의 회복과 성장을 함께 걷는 공간입니다.<br />
-          부산 북구 화명동에서 여러분을 기다립니다.
+          마음의 회복과 성장을 함께 걷는 공간 <span className="text-slate-900 font-semibold"> 빛나는 별 심리상담센터 </span>에서 여러분을 기다립니다.
         </p>
         <button
           onClick={scrollToContact}
