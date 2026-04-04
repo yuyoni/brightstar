@@ -24,6 +24,7 @@ export default function NewPostForm({ categories }: NewPostFormProps) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (loading) return
     setError('')
     setLoading(true)
 

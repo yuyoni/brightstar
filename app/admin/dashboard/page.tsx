@@ -99,7 +99,7 @@ export default async function AdminDashboardPage({ searchParams }: DashboardPage
           <PostSearch categories={categories} isAdmin />
         </Suspense>
 
-        <PostsTable key={page} posts={posts} total={total} />
+        <PostsTable key={JSON.stringify(searchParams)} posts={posts} total={total} />
 
         {/* 페이지네이션 */}
         {totalPages > 1 && (

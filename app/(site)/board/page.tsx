@@ -53,8 +53,8 @@ export default async function BoardPage({ searchParams }: BoardPageProps) {
       ) : (
         <div className="divide-y divide-gray-100">
           {posts.map((post, index) => (
-            <Link key={post.id} href={`/board/${post.id}`} className="group block py-6">
-              <div className="flex items-start justify-between gap-6">
+            <Link key={post.id} href={`/board/${post.id}`} className="group block py-3 md:py-6">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-6">
                 <div className="flex items-start gap-4 min-w-0">
                   <span className="text-sm text-gray-300 tabular-nums pt-0.5 shrink-0">
                     {String(posts.length - index).padStart(2, '0')}
@@ -78,7 +78,7 @@ export default async function BoardPage({ searchParams }: BoardPageProps) {
                     </p>
                   </div>
                 </div>
-                <time className="text-sm text-gray-400 shrink-0 pt-0.5">
+                <time className="text-sm text-gray-400 shrink-0 pt-0.5 text-right md:text-left">
                   {new Date(post.created_at).toLocaleDateString('ko-KR', {
                     year: 'numeric',
                     month: '2-digit',
