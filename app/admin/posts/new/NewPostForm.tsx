@@ -41,10 +41,10 @@ export default function NewPostForm({ categories }: NewPostFormProps) {
     })
 
     const data = await res.json()
-    setLoading(false)
 
     if (!res.ok) {
       setError(data.error)
+      setLoading(false)
       return
     }
 

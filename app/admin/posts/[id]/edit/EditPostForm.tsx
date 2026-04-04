@@ -48,10 +48,10 @@ export default function EditPostForm({ post, categories }: EditPostFormProps) {
     })
 
     const data = await res.json()
-    setLoading(false)
 
     if (!res.ok) {
       setError(data.error)
+      setLoading(false)
       return
     }
 
