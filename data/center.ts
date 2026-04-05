@@ -1,16 +1,4 @@
 import { CenterInfo } from "@/types"
+import data from "./center.json"
 
-export const centerInfo: CenterInfo = {
-  name: "빛나는 별 심리상담센터",
-  address: "부산 북구 화명신도시로 129 골든프라자 7층",
-  phone: "010-2191-4204",
-  email: "example@brightstar.com",
-  hours: {
-    weekday: "평일 10:00 - 20:00",
-    weekend: "토요일 10:00 ~ 18:00 (일요일 휴무)"
-  },
-  location: {
-    lat: 35.2328,
-    lng: 129.0050
-  }
-} 
+export const centerInfo: CenterInfo = data
