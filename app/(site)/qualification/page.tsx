@@ -79,7 +79,7 @@ export default function QualificationPage() {
                             </h3>
                             <p className="text-gray-300 text-base leading-relaxed mb-4">
                                 빛나는 별 심리상담센터는 한국직업능력연구원에 등록된 민간자격
-                                '별자리 심리상담사'의 교육 및 자격 발급기관입니다.
+                                [별자리 심리상담사]의 교육 및 자격 발급기관입니다.
                             </p>
                             <p className="text-gray-300 text-base leading-relaxed">
                                 본 센터의 교육과정을 이수한 수강생은 소정의 평가를 거쳐 자격 취득이 가능하며,
