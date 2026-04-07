@@ -33,8 +33,9 @@ export default function AboutPage() {
                         {/* 프로필 영역 */}
                         <div className="flex flex-col sm:flex-row gap-8 mb-10">
                             <div className="w-full sm:w-40 shrink-0">
-                                <div className="aspect-[3/4] bg-gray-200 rounded-xl w-full sm:w-40"></div>
-                            </div>
+                                <div className="relative aspect-[3/4] bg-gray-200 rounded-xl w-full sm:w-40 overflow-hidden">
+                                    <Image src="/profile.jpeg" alt="센터장프로필" fill className="object-cover" />
+                                </div>                            </div>
                             <div className="flex flex-col justify-center">
                                 <p className="text-base font-medium text-slate-900 mb-1">{director.name}</p>
                                 <div className="w-8 h-px bg-amber-400 mb-4"></div>
