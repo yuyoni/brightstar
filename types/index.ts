@@ -35,6 +35,7 @@ export interface AdminUser {
 export interface CenterInfo {
   name: string
   address: string
+  shortAddress: string
   phone: string
   email: string
   hours: {

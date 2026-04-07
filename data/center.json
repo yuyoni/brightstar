@@ -1,6 +1,7 @@
 {
   "name": "빛나는 별 심리상담센터",
   "address": "부산 북구 화명신도시로 129 골든프라자 7층",
+  "shortAddress": "부산 북구 화명신도시로 129",
   "phone": "010-2191-4204",
   "email": "example@brightstar.com",
   "hours": {

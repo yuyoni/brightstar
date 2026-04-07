@@ -4,6 +4,7 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { centerInfo } from "@/data/center";
 import Map from "@/components/features/Map";
+import ContactButtons from "@/components/ui/ContactButtons";
 
 export const metadata: Metadata = {
     title: "문의 및 예약 | 빛나는 별 심리상담센터",
@@ -88,6 +89,12 @@ export default function ContactPage() {
                         </div>
                     </ScrollReveal>
                 </div>
+
+                <ScrollReveal>
+                    <div className="mb-16">
+                        <ContactButtons />
+                    </div>
+                </ScrollReveal>
 
                 <ScrollReveal>
                     <Map />

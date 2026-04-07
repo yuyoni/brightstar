@@ -17,8 +17,8 @@ export default function Map() {
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
                         <KakaoMap
-                            address="부산 북구 화명신도시로 129"
-                            detailAddress="부산 북구 화명신도시로 129 골든프라자 7층"
+                            address={centerInfo.shortAddress}
+                            detailAddress={centerInfo.address}
                         />
                         <div className="p-6">
                             <p className="text-base md:text-lg text-gray-600 leading-relaxed">

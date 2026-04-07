@@ -40,7 +40,7 @@ export default function Header() {
     { href: "/services", label: "상담안내", order: 3 },
     { href: "/qualification", label: "자격과정", order: 4 },
     { href: "/board", label: "공지사항", order: 5 },
-    { href: "/contact", label: "문의", order: 6 },
+    { href: "/#contact", label: "문의", order: 6 },
   ].sort((a, b) => a.order - b.order)
 
   return (
