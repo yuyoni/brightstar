@@ -1,10 +1,9 @@
-import Hero from "@/components/features/Hero";
 import About from "@/components/features/About";
-import Services from "@/components/features/Services";
-import Qualification from "@/components/features/Qualification";
-import Process from "@/components/features/Process";
 import Contact from "@/components/features/Contact";
+import Hero from "@/components/features/Hero";
 import Map from "@/components/features/Map";
+import Qualification from "@/components/features/Qualification";
+import Services from "@/components/features/Services";
 
 export default function Home() {
     return (

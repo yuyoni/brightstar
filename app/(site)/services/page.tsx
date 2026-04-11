@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { services } from "@/data/services";
 import consultationData from "@/data/consultation.json";
 import Link from "next/link";
+import IconMap from "@/components/ui/Icon";
 
 export const metadata: Metadata = {
     title: "상담 서비스 | 빛나는 별 심리상담센터",
@@ -25,37 +26,41 @@ export default function ServicesPage() {
                     />
                 </ScrollReveal>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                    {services.map((service, index) => (
-                        <ScrollReveal key={service.id}>
-                            <div
-                                className="border border-gray-200 rounded-xl p-6 bg-white hover:shadow-md transition duration-300"
-                                style={{ transitionDelay: `${index * 100}ms` }}
-                            >
-                                <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-3">
-                                    {service.title}
-                                </h3>
-                                <p className="text-base text-gray-600 leading-relaxed mb-4">
-                                    {service.description}
-                                </p>
-                                <ul className="space-y-2">
-                                    {service.details.map((detail, index) => (
-                                        <li
-                                            key={index}
-                                            className="flex items-start"
-                                        >
-                                            <span className="text-amber-400 mr-2 text-sm">
-                                                ✓
-                                            </span>
-                                            <span className="text-sm text-gray-600">
-                                                {detail}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </ScrollReveal>
-                    ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    {
+
+                        services.map((service, index) => {
+                            const Icon = IconMap[service.icon]
+
+                            return <ScrollReveal key={service.id}>
+                                <div
+                                    className="border border-gray-200 rounded-xl p-6 bg-white hover:shadow-md transition duration-300"
+                                    style={{ transitionDelay: `${index * 100}ms` }}
+                                >
+                                    <h3 className="flex items-center gap-2 text-xl md:text-2xl font-medium text-slate-900 mb-3">
+                                        <Icon className="w-6 h-6 text-amber-400" /> {service.title}
+                                    </h3>
+                                    <p className="text-base text-gray-600 leading-relaxed mb-4">
+                                        {service.description}
+                                    </p>
+                                    <ul className="space-y-2">
+                                        {service.details.map((detail, index) => (
+                                            <li
+                                                key={index}
+                                                className="flex items-start"
+                                            >
+                                                <span className="text-amber-400 mr-2 text-sm">
+                                                    ✓
+                                                </span>
+                                                <span className="text-sm text-gray-600">
+                                                    {detail}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </ScrollReveal>
+                        })}
                 </div>
 
                 <ScrollReveal>

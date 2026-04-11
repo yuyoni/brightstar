@@ -27,6 +27,11 @@
         "line2": "부부상담"
       },
       {
+        "icon": "Star",
+        "line1": "별자리",
+        "line2": "심리상담"
+      },
+      {
         "icon": "ClipboardCheck",
         "line1": "MMPI, TCI,",
         "line2": "웩슬러 지능검사"

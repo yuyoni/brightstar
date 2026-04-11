@@ -3,6 +3,7 @@ export interface Service {
   title: string
   description: string
   details: string[]
+  icon: string
 }
 
 export interface Category {
