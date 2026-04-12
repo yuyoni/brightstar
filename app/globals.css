@@ -54,34 +54,46 @@ html {
   }
 
   /* 영화 필름 애니메이션 */
-  @keyframes film-scroll {
-    0% {
-      transform: translateX(0);
-    }
+  @keyframes film-scroll-sm {
+    to { transform: translateX(calc(100vw * -4)); }
+  }
 
-    100% {
-      transform: translateX(-240vw);
-    }
+  @keyframes film-scroll-md {
+    to { transform: translateX(calc(75vw * -4)); }
   }
 
   .film-strip {
     display: flex;
-    width: calc(80vw * 6);
+    width: calc(100vw * 8);
     height: 100%;
-    animation: film-scroll 50s linear infinite;
+    animation: film-scroll-sm 40s linear infinite;
   }
 
   .film-strip-set {
     display: flex;
-    width: calc(80vw * 3);
+    width: calc(100vw * 4);
     height: 100%;
   }
 
   .film-item {
     position: relative;
     flex: none;
-    width: 80vw;
+    width: 100vw;
     height: 100vh;
+  }
+
+  @media (min-width: 768px) {
+    .film-strip {
+      width: calc(75vw * 8);
+      animation-name: film-scroll-md;
+      animation-duration: 60s;
+    }
+    .film-strip-set {
+      width: calc(75vw * 4);
+    }
+    .film-item {
+      width: 75vw;
+    }
   }
 
   /* 스크롤 스냅 */

@@ -102,6 +102,27 @@ export default function Hero() {
 
       {/* 소프트 앰비언트 라이트 배경 */}
       <div className="absolute inset-0 z-0 bg-stone-50">
+        {/* 필름 슬라이드 배경 */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="film-strip">
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="film-strip-set">
+                {[1, 2, 3, 4].map((index) => (
+                  <div key={index} className="film-item">
+                    <Image
+                      src={`/place${index}.jpeg`}
+                      alt=""
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          {/* blur + opacity 오버레이 */}
+          <div className="absolute inset-0 bg-white/40 md:bg-white/60 backdrop-blur-sm" />
+        </div>
         <div className="absolute top-[-15%] left-[-10%] w-[700px] h-[700px] rounded-full bg-amber-100/60 blur-[140px]" />
         <div className="absolute bottom-[-15%] right-[-10%] w-[600px] h-[600px] rounded-full bg-slate-200/50 blur-[120px]" />
         <div className="absolute top-[40%] left-[40%] w-[400px] h-[400px] rounded-full bg-stone-200/40 blur-[100px]" />
@@ -136,7 +157,7 @@ export default function Hero() {
 
       {/* 컨텐츠 */}
       <div className="flex flex-col items-center relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <Image src="/logo.png" alt="빛나는 별" width={280} height={280} className="object-cover" />
+        <Image src="/logo.png" alt="빛나는 별" width={280} height={280} className="object-cover w-40 h-40 md:w-[280px] md:h-[280px]" />
         <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-8 animate-fade-in-delay">
           {hero.subtitlePrefix}{" "}
           <span className="text-slate-900 font-semibold">{hero.subtitleBrand}</span>

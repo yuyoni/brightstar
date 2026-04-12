@@ -14,7 +14,7 @@ export default function Services() {
         <SectionTitle title={section.section.title} subtitle={section.section.subtitle} />
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {servicesData.map((service, index) => (
           <ScrollReveal key={service.id}>
             <div

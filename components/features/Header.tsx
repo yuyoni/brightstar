@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b bg-white/50 backdrop-blur-md border-white/40 shadow-sm ${isVisible ? "translate-y-0" : "-translate-y-full"
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b bg-white/70 backdrop-blur-md border-white/40 shadow-sm ${isVisible ? "translate-y-0" : "-translate-y-full"
           } `}
       >
         <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between">
