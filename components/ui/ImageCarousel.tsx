@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react'
 
@@ -12,15 +12,13 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
   const [current, setCurrent] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
 
-  if (images.length === 0) return null
-
-  const prev = () => {
+  const prev = useCallback(() => {
     setCurrent((c) => (c - 1 + images.length) % images.length)
-  }
+  }, [images.length])
 
-  const next = () => {
+  const next = useCallback(() => {
     setCurrent((c) => (c + 1) % images.length)
-  }
+  }, [images.length])
 
   const openLightbox = () => {
     setIsOpen(true)
@@ -54,7 +52,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [isOpen, images.length])
+  }, [isOpen, images.length, prev, next])
 
   // Lightbox가 열려 있을 때 배경 스크롤 방지
   useEffect(() => {
@@ -68,6 +66,9 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
     }
   }, [isOpen])
 
+  // Hook은 모두 호출한 후 조건부 return
+  if (images.length === 0) return null
+
   return (
     <>
       {/* 이미지 영역 */}
@@ -80,7 +81,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           src={images[current]}
           alt={`이미지 ${current + 1}`}
           fill
-          className="object-cover"
+          className="object-contain"
           unoptimized
         />
 
@@ -133,8 +134,8 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
                   onClick={() => setCurrent(i)}
                   aria-label={`${i + 1}번 이미지`}
                   className={`w-1.5 h-1.5 rounded-full transition duration-200 ${i === current
-                    ? 'bg-white scale-125'
-                    : 'bg-white/50 hover:bg-white/80'
+                      ? 'bg-white scale-125'
+                      : 'bg-white/50 hover:bg-white/80'
                     }`}
                 />
               ))}
@@ -157,7 +158,10 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           {/* 닫기 버튼 */}
           <button
             type="button"
-            onClick={closeLightbox}
+            onClick={(e) => {
+              e.stopPropagation()
+              closeLightbox()
+            }}
             aria-label="이미지 닫기"
             className="absolute top-4 right-4 z-30 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition"
           >
