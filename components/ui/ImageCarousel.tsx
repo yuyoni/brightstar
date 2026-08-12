@@ -81,7 +81,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           src={images[current]}
           alt={`이미지 ${current + 1}`}
           fill
-          className="object-contain"
+          className="object-cover"
           unoptimized
         />
 
@@ -134,8 +134,8 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
                   onClick={() => setCurrent(i)}
                   aria-label={`${i + 1}번 이미지`}
                   className={`w-1.5 h-1.5 rounded-full transition duration-200 ${i === current
-                      ? 'bg-white scale-125'
-                      : 'bg-white/50 hover:bg-white/80'
+                    ? 'bg-white scale-125'
+                    : 'bg-white/50 hover:bg-white/80'
                     }`}
                 />
               ))}
