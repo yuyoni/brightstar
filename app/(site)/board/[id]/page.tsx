@@ -21,7 +21,7 @@ export default async function BoardDetailPage({ params }: BoardDetailPageProps) 
 
   if (error || !post) notFound()
 
-  // 이전글/다음글 (공개 게시글만)
+  // 이전글/다음글 조회 (공개 게시글만) 및 조회수 증가
   const [{ data: prevData }, { data: nextData }] = await Promise.all([
     supabaseAdmin
       .from('posts')
@@ -39,6 +39,7 @@ export default async function BoardDetailPage({ params }: BoardDetailPageProps) 
       .order('created_at', { ascending: true })
       .limit(1)
       .maybeSingle(),
+    supabaseAdmin.from('posts').update({ views: post.views + 1 }).eq('id', id),
   ])
 
   // 표시할 이미지 목록: image_urls 우선, 없으면 image_url 폴백

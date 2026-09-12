@@ -36,6 +36,7 @@ create table public.posts (
   is_published boolean default true not null,
   category_id uuid references public.categories(id) on delete set null,
   image_url text,
+  views integer default 0 not null,
   created_at timestamp with time zone default now(),
   updated_at timestamp with time zone default now()
 );
@@ -47,7 +48,11 @@ create table public.posts (
 > alter table public.posts add column image_url text;
 > -- 다중 이미지 (최대 5장, 순서 보존)
 > alter table public.posts add column image_urls text[] default '{}';
+> -- 조회수
+> alter table public.posts add column views integer default 0 not null;
 > ```
+
+> `/board/[id]` 상세페이지 방문 시 조회수를 1 증가시켜 저장한다.
 
 ---
 
@@ -170,6 +175,7 @@ JWT_SECRET=랜덤32바이트문자열
 - [ ] `posts` 테이블 생성 (`image_url` 컬럼 포함) + RLS 정책 적용
 - [ ] `updated_at` 트리거 생성
 - [ ] `posts` 테이블에 `image_urls text[] default '{}'` 컬럼 추가
+- [ ] `posts` 테이블에 `views integer default 0 not null` 컬럼 추가
 - [ ] `post-images` Storage 버킷 생성 (Public)
 - [ ] 어드민 계정 시드 삽입
 - [ ] `.env.local` 환경변수 설정

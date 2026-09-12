@@ -22,6 +22,7 @@ export interface Post {
   categories?: Category | null
   image_url: string | null
   image_urls: string[] | null
+  views: number
   created_at: string
   updated_at: string
 }

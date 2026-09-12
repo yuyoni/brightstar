@@ -103,6 +103,7 @@ export default function PostsTable({ posts, total }: PostsTableProps) {
                   <th className="px-4 py-3 font-medium text-gray-500 w-28 text-center">카테고리</th>
                   <th className="px-4 py-3 font-medium text-gray-500 w-20 text-center">상태</th>
                   <th className="px-4 py-3 font-medium text-gray-500 w-32 text-center">작성일</th>
+                  <th className="px-4 py-3 font-medium text-gray-500 w-20 text-center">조회수</th>
                   <th className="px-4 py-3 w-24"></th>
                 </tr>
               </thead>
@@ -146,6 +147,9 @@ export default function PostsTable({ posts, total }: PostsTableProps) {
                     </td>
                     <td className="px-4 py-3 text-gray-400 text-center text-xs">
                       {new Date(post.created_at).toLocaleDateString('ko-KR')}
+                    </td>
+                    <td className="px-4 py-3 text-gray-400 text-center text-xs">
+                      {post.views}
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3 justify-end">
@@ -203,7 +207,7 @@ export default function PostsTable({ posts, total }: PostsTableProps) {
                     {post.title}
                   </Link>
                   <p className="text-xs text-gray-400">
-                    {new Date(post.created_at).toLocaleDateString('ko-KR')}
+                    {new Date(post.created_at).toLocaleDateString('ko-KR')} · 조회 {post.views}
                   </p>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
