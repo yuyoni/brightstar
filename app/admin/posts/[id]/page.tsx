@@ -4,6 +4,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import { Circle } from 'lucide-react'
 import ImageCarousel from '@/components/ui/ImageCarousel'
 import PostNavigation from '@/components/ui/PostNavigation'
+import PostContent from '@/components/ui/PostContent'
 import DeletePostButton from './DeletePostButton'
 
 interface AdminPostDetailPageProps {
@@ -113,9 +114,7 @@ export default async function AdminPostDetailPage({ params }: AdminPostDetailPag
           <ImageCarousel images={images} />
 
           {/* 내용 */}
-          <div className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">
-            {post.content}
-          </div>
+          <PostContent content={post.content} className="text-sm text-gray-600 leading-relaxed" />
 
           {/* 이전/다음 글 */}
           <PostNavigation

@@ -4,6 +4,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import ImageCarousel from '@/components/ui/ImageCarousel'
 import PostNavigation from '@/components/ui/PostNavigation'
 import Container from '@/components/ui/Container'
+import PostContent from '@/components/ui/PostContent'
 
 interface BoardDetailPageProps {
   params: Promise<{ id: string }>
@@ -83,9 +84,7 @@ export default async function BoardDetailPage({ params }: BoardDetailPageProps) 
           {/* 이미지 캐러셀 */}
           <ImageCarousel images={images} />
 
-          <div className="text-base text-gray-600 leading-relaxed whitespace-pre-wrap">
-            {post.content}
-          </div>
+          <PostContent content={post.content} className="text-base text-gray-600 leading-relaxed" />
         </article>
 
         {/* 이전/다음 글 */}

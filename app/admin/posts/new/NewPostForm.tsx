@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Category } from '@/types'
 import ImageUploader from '@/components/ui/ImageUploader'
+import ContentEditor from '@/components/ui/ContentEditor'
 
 interface NewPostFormProps {
   categories: Category[]
@@ -128,14 +129,7 @@ export default function NewPostForm({ categories }: NewPostFormProps) {
             {/* 내용 */}
             <div className="space-y-1.5">
               <label className="block text-sm font-medium text-slate-700">내용</label>
-              <textarea
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                rows={16}
-                className="w-full border border-gray-200 rounded-md px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-400 resize-none leading-relaxed"
-                placeholder="내용을 입력하세요"
-                required
-              />
+              <ContentEditor value={content} onChange={setContent} />
             </div>
 
             {error && <p className="text-sm text-red-500">{error}</p>}

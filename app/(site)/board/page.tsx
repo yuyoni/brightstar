@@ -4,6 +4,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import { Post, Category } from '@/types'
 import PostSearch from '@/components/ui/PostSearch'
 import Container from '@/components/ui/Container'
+import { toPlainText } from '@/lib/postContent'
 
 export const dynamic = 'force-dynamic'
 
@@ -76,7 +77,7 @@ export default async function BoardPage({ searchParams }: BoardPageProps) {
                         </h2>
                       </div>
                       <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed">
-                        {post.content}
+                        {toPlainText(post.content)}
                       </p>
                     </div>
                   </div>
