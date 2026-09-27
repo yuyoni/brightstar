@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
     title: "빛나는 별 심리상담센터 | 별자리 심리학",
@@ -21,6 +22,7 @@ export default function RootLayout({
             <body className="font-pretendard">
                 {children}
             </body>
+            <Analytics />
         </html>
     );
 }
