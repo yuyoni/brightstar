@@ -5,6 +5,7 @@ import { Post, Category } from '@/types'
 import PostSearch from '@/components/ui/PostSearch'
 import Container from '@/components/ui/Container'
 import { toPlainText } from '@/lib/postContent'
+import { buildSearchFilter } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
 
@@ -23,7 +24,8 @@ async function getPosts(p: BoardPageProps['searchParams']): Promise<Post[]> {
     .select('*, categories(id, name, color)')
     .eq('is_published', true)
 
-  if (p.q) query = query.or(`title.ilike.%${p.q}%,content.ilike.%${p.q}%`)
+  const searchFilter = p.q ? buildSearchFilter(['title', 'content'], p.q) : null
+  if (searchFilter) query = query.or(searchFilter)
   if (p.from) query = query.gte('created_at', `${p.from}T00:00:00`)
   if (p.to) query = query.lte('created_at', `${p.to}T23:59:59`)
   if (p.category) query = query.eq('category_id', p.category)
