@@ -16,6 +16,14 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-gray-400">
               <p>{centerInfo.phone}</p>
               <p>{centerInfo.email}</p>
+              <a
+                href={centerInfo.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block hover:text-white transition duration-300"
+              >
+                YouTube 채널 : 별자리 심리학 
+              </a>
             </div>
           </div>
           <div>

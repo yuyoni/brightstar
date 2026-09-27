@@ -40,6 +40,7 @@ export interface CenterInfo {
   shortAddress: string
   phone: string
   email: string
+  youtubeUrl: string
   hours: {
     weekday: string
     weekend: string
