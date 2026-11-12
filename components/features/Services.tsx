@@ -1,9 +1,10 @@
 import Container from "../ui/Container"
 import SectionTitle from "../ui/SectionTitle"
 import ScrollReveal from "../ui/ScrollReveal"
+import ServiceGrid from "../ui/ServiceGrid"
 import Link from "next/link"
 import homeData from "@/data/home.json"
-import servicesData from "@/data/services.json"
+import { services } from "@/data/services"
 
 const { services: section } = homeData
 
@@ -14,27 +15,7 @@ export default function Services() {
         <SectionTitle title={section.section.title} subtitle={section.section.subtitle} />
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {servicesData.map((service, index) => (
-          <ScrollReveal key={service.id}>
-            <div
-              className="border border-gray-200 rounded-xl p-6 bg-white hover:shadow-sm transition duration-300"
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <h3 className="text-xl md:text-2xl font-medium text-slate-900 mb-3">{service.title}</h3>
-              <p className="text-base text-gray-600 leading-relaxed mb-4">{service.description}</p>
-              <ul className="space-y-2">
-                {service.details.map((detail, i) => (
-                  <li key={i} className="flex items-start">
-                    <span className="text-amber-400 mr-2 text-sm">✓</span>
-                    <span className="text-sm text-gray-600">{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
-        ))}
-      </div>
+      <ServiceGrid services={services} />
 
       <ScrollReveal>
         <div className="mt-16 text-center">
